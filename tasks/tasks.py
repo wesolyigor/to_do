@@ -9,7 +9,10 @@ class Tasks(AbsTasks):
         return list(filter(lambda t: t.id == idx, self._tasks))[0]
 
     def update_task(self, idx, new_task):
-        new_task = list(filter(lambda t: t.id == idx, self._tasks))[0]
+        old_task = list(filter(lambda t: t.id == idx, self._tasks))[0]
+        new_task.id = old_task.id
+        list_id = self._tasks.index(old_task)
+        self._tasks[list_id] = new_task
 
     def delete_task(self, idx):
         task_to_remove = list(filter(lambda t: t.id == idx, self._tasks))
