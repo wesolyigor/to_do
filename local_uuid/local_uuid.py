@@ -2,7 +2,7 @@ from collections import Iterator
 
 from local_uuid.singleton import Singleton
 
-
+# todo implement using clousure
 class UUID(Singleton, Iterator):
     _idx = 0
 

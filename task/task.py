@@ -15,6 +15,10 @@ class Task(ABSTask):
     def id(self):
         return self._id
 
+    @property
+    def due_time(self):
+        return datetime.now() - self.created
+
     @id.setter
     def id(self, new_val):
         self._id = new_val

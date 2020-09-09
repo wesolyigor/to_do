@@ -8,7 +8,6 @@
 1. Factory -> task creation
 2. Command -> CLI
 3. Observer -> dashboard/ mail remainder
-4. Singleton -> connection to db
+4. Singleton -> connection to db, universal unique id
 5. Facade -> db api
-6. Iterator -> sort and filtering
-7. Iterator -> dashboard view
+6. Iterator -> get all task, sort and filtering
