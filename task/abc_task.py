@@ -18,8 +18,6 @@ class ABSTask(ABC):
     def status(self):
         pass
 
-    @property
     @abstractmethod
     def toggle_status(self):
         pass
-   

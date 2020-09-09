@@ -11,3 +11,4 @@
 4. Singleton -> connection to db
 5. Facade -> db api
 6. Iterator -> sort and filtering
+7. Iterator -> dashboard view

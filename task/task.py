@@ -9,6 +9,11 @@ class Task(ABSTask):
         self._name = name
         self._status = True
         self._created = datetime.now()
+        self._id = ' '
+
+    @property
+    def id(self):
+        pass
 
     @property
     def name(self):
@@ -22,7 +27,6 @@ class Task(ABSTask):
     def status(self):
         return self._status
 
-    @property
     def toggle_status(self):
         self._status = False if self._status else True
 
