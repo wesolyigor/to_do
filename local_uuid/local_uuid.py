@@ -3,7 +3,7 @@ from collections import Iterator
 from local_uuid.singleton import Singleton
 
 
-# todo implement using clousure
+# # todo implement using clousure
 class UUID(Singleton, Iterator):
     _idx = 0
 
@@ -18,3 +18,17 @@ class UUID(Singleton, Iterator):
         result = self._idx
         self._idx += 1
         return result
+
+#
+# def uuid():
+#     counter = 0
+#
+#     def inner(idx=None):
+#         nonlocal counter
+#         if idx is not None:
+#             counter = idx
+#         result = counter
+#         counter += 1
+#         return result
+#
+#     return inner
