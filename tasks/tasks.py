@@ -1,7 +1,15 @@
+from dbs.db_connection import DbConnection
+from task.task import Task
 from tasks.abs_tasks import AbsTasks
 
 
 class Tasks(AbsTasks):
+    def __init__(self):
+        db = DbConnection().db
+        db_tasks = db.execute('SELECT * FROM tasks')
+        for idx, name, status, *rest in db_tasks:
+            self.add_task(Task(name, idx))
+
     def add_task(self, task):
         self._tasks.append(task)
 

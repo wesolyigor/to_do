@@ -1,6 +1,6 @@
 from collections import Iterator
 
-from local_uuid.singleton import Singleton
+from singleton.singleton import Singleton
 
 
 # # todo implement using clousure

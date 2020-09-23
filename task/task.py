@@ -6,7 +6,7 @@ from task.abc_task import ABSTask
 class Task(ABSTask):
 
     def __init__(self, name, uuid):
-        self._id = next(uuid)
+        self._id = uuid
         self._name = name
         self._status = True
         self._created = datetime.now()
