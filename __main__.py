@@ -1,14 +1,15 @@
 from cli.cli import Cli
 from cli.cmds.create_task import CreateTask
+from cli.cmds.remove_task import DeleteTask
 from cli.cmds.show_task import ShowTask
 from cli.cmds.toggle_status import ToggleStatus
 
-commands = (CreateTask, ShowTask, ToggleStatus)
+commands = (CreateTask, ShowTask, ToggleStatus, DeleteTask)
 
 app = Cli(commands)
 app.run()
 
-
+#cammelcase - piszemy clasy, dlatego w tej tupli
 
 
 

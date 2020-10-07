@@ -6,7 +6,10 @@ db_name = 'todo.db'
 db_path = os.path.join(os.path.dirname(__file__), '..', db_name)
 # dbpath prowadzi do roota aplikacji
 conn = sqlite3.connect(db_path)
+# połączenie z bazą - żebyśmy mogli z nią rozmawiać
 c = conn.cursor()
+# kursor żebyśmy mogli coś z tym zrobić
+
 
 c.execute('DROP TABLE IF EXISTS tasks')
 c.execute('DROP TABLE IF EXISTS dashboard')  # nazwy tabeli

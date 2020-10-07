@@ -21,3 +21,8 @@ class ABSTask(ABC):
     @abstractmethod
     def toggle_status(self):
         pass
+
+    @abstractmethod
+    def deadline(self):
+        pass
+

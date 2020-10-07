@@ -4,13 +4,22 @@ from tasks.abs_tasks import AbsTasks
 
 
 class Tasks(AbsTasks):
+    """
+    tworzymy obiekt taska 20:48
+    """
+
     def __init__(self):
         db = DbConnection().db
         db_tasks = db.execute('SELECT * FROM tasks')
-        for idx, name, status, *rest in db_tasks:
-            self.add_task(Task(name, idx))
+        for db_task in db_tasks:
+            self.add_task(Task(db_task))
 
     def add_task(self, task):
+        """
+
+        :param task:
+        :return:
+        """
         self._tasks.append(task)
 
     def get_task(self, idx):
@@ -25,6 +34,12 @@ class Tasks(AbsTasks):
     def delete_task(self, idx):
         task_to_remove = list(filter(lambda t: t.id == idx, self._tasks))
         self._tasks.remove(task_to_remove[0])
+
+        db = DbConnection().db
+        c = db.cursor()
+        query = f"DELETE FROM tasks WHERE id = {idx}"
+        c.execute(query)
+        db.commit()
 
     def __repr__(self):
         return f'class Task()'
