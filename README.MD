@@ -9,5 +9,5 @@
 2. Command -> CLI 
 3. Observer -> dashboard/ mail remainder
 4. Singleton -> connection to db, universal unique id
-5. Facade -> db api
+5. Facade -> db api (chcemy mieć możliwość zmiany bazy lub obsługi kilku baz danych + schowanie zapytania do bazy poza commands)
 6. Iterator -> get all task, sort and filtering

@@ -1,9 +1,10 @@
 from cli.cmds.abs_command import AbsCommand
 
 
-class ShowTask(AbsCommand):
-    name = 'ShowTask'
+class ShowTasks(AbsCommand):
+    name = 'ShowTasks'
 
     def execute(self):
         for task in self.dashboard:
             print(task)
+

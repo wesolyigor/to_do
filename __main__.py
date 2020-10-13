@@ -1,10 +1,14 @@
 from cli.cli import Cli
 from cli.cmds.create_task import CreateTask
+from cli.cmds.filter_task import FilterTask
 from cli.cmds.remove_task import DeleteTask
-from cli.cmds.show_task import ShowTask
+from cli.cmds.show_active_task import ShowActiveTask
+from cli.cmds.show_done_task import ShowDoneTask
+from cli.cmds.show_tasks import ShowTasks
+from cli.cmds.sort_task import SortTasks
 from cli.cmds.toggle_status import ToggleStatus
 
-commands = (CreateTask, ShowTask, ToggleStatus, DeleteTask)
+commands = (CreateTask, ShowTasks, ToggleStatus, DeleteTask, ShowActiveTask, ShowDoneTask, FilterTask, SortTasks)
 
 app = Cli(commands)
 app.run()

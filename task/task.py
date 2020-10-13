@@ -11,11 +11,12 @@ class Task(ABSTask):
         self._id = db_task[0]
         self._name = db_task[1]
         self._status = db_task[2]
-        time_delta = datetime.now() - datetime.strptime(db_task[3], "%Y-%m-%d %H:%M:%S")
-        m, s = divmod(time_delta.seconds, 60)
-        h, m = divmod(m, 60)
-        # TODO do sprawdzenia divmod
-        self._created = f"{time_delta.days} days, {h:d}h:{m:02d}m"
+        # time_delta = datetime.now() - datetime.strptime(db_task[3], "%Y-%m-%d %H:%M:%S")
+        # m, s = divmod(time_delta.seconds, 60)
+        # h, m = divmod(m, 60)
+        # # TODO do sprawdzenia divmod
+        # self._created = f"{time_delta.days} days, {h:d}h:{m:02d}m"
+        self._created = datetime.strptime(db_task[3], "%Y-%m-%d %H:%M:%S")
 
     @property
     def id(self):
@@ -24,6 +25,14 @@ class Task(ABSTask):
     @property
     def due_time(self):
         return datetime.now() - self.created
+
+    @property
+    def duration(self):
+        time_delta = datetime.now() - self.created
+        m, s = divmod(time_delta.seconds, 60)
+        h, m = divmod(m, 60)
+        # TODO do sprawdzenia divmod
+        return f"{time_delta.days} days, {h:d}h:{m:02d}m"
 
     # TODO block change id
     @id.setter
@@ -55,6 +64,7 @@ class Task(ABSTask):
         return self._deadline
 
     def __repr__(self):
-        return f'class Task(id:{self.id} name: {self.name}, status: {"Done" if self.status else "Active"}, created: {self._created}))'
+        return f'class Task(id:{self.id} name: {self.name}, status: {"Done" if self.status else "Active"}, ' \
+               f'duration: {self.duration}))'
 
     __str__ = __repr__
