@@ -1,4 +1,5 @@
 from dbs.db_connection import DbConnection
+from model import Model
 from task.task import Task
 from tasks.abs_tasks import AbsTasks
 
@@ -35,11 +36,13 @@ class Tasks(AbsTasks):
         task_to_remove = list(filter(lambda t: t.id == idx, self._tasks))
         self._tasks.remove(task_to_remove[0])
 
-        db = DbConnection().db
-        c = db.cursor()
-        query = f"DELETE FROM tasks WHERE id = {idx}"
-        c.execute(query)
-        db.commit()
+        Model.delete(self, idx)
+
+        # db = DbConnection().db
+        # c = db.cursor()
+        # query = f"DELETE FROM tasks WHERE id = {idx}"
+        # c.execute(query)
+        # db.commit()
 
     def __repr__(self):
         return f'class Task()'

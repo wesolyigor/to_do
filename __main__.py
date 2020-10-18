@@ -13,8 +13,7 @@ commands = (CreateTask, ShowTasks, ToggleStatus, DeleteTask, ShowActiveTask, Sho
 app = Cli(commands)
 app.run()
 
-#cammelcase - piszemy clasy, dlatego w tej tupli
-
+# cammelcase - piszemy clasy, dlatego w tej tupli
 
 
 # get_user_command()
