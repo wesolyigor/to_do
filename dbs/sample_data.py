@@ -1,25 +1,31 @@
 import os
 import sqlite3
 
-db_name = 'todo.db'
 
-db_path = os.path.join(os.path.dirname(__file__), '..', db_name)
-# dbpath prowadzi do roota aplikacji
-conn = sqlite3.connect(db_path)
-c = conn.cursor()
+def sample_data():
+    db_name = 'todo.db'
 
-c.execute("INSERT INTO dashboard (name) VALUES ('main')")
+    db_path = os.path.join(os.path.dirname(__file__), '..', db_name)
+    # dbpath prowadzi do roota aplikacji
+    conn = sqlite3.connect(db_path)
+    c = conn.cursor()
 
-tasks = [
-    ('Kebab', 0, 0),
-    ('Burger', 0, 0),
-    ('Pizza', 0, 0),
-    ('Alkohol', 0, 0)
-]
+    c.execute("INSERT INTO dashboard (name) VALUES ('main')")
 
-c.executemany("INSERT INTO tasks (name, status, dashboard_id) VALUES (?, ?, ?)", tasks)
+    tasks = [
+        ('Kebab', 0, 0),
+        ('Burger', 0, 0),
+        ('Pizza', 0, 0),
+        ('Alkohol', 0, 0)
+    ]
 
-conn.commit()
-conn.close()
+    c.executemany("INSERT INTO tasks (name, status, dashboard_id) VALUES (?, ?, ?)", tasks)
 
-print('Sample data ')
+    conn.commit()
+    conn.close()
+
+    print('Sample data ')
+
+
+if __name__ == '__main__':
+    sample_data()

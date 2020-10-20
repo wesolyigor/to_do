@@ -10,13 +10,16 @@ class Tasks(Model):
 
 
 task = Tasks(name='ala')
-Tasks.add(task)
 
-task2 = Tasks(status=0)
-Tasks.update(task2, 22, 1)
+print(Tasks.query(task, name='dupa'))
 
-task3 = Tasks()
-Tasks.delete(task3, 33)
+# Tasks.add(task)
+#
+# task2 = Tasks(status=0)
+# Tasks.update(task2, 22, 1)
+#
+# task3 = Tasks()
+# Tasks.delete(task3, 33)
 # for member in inspect.getmembers(task):
 #     print(member)
 #

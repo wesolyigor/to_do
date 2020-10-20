@@ -30,8 +30,15 @@ class Model:
         # db.commit()
 
     @staticmethod
-    def query():
-        pass
+    def query(obj, **kwargs):
+        table = obj.__class__.__name__
+        filter_options = " AND ".join([f'{k}=?' for k, v in kwargs.items()])
+        query = f"SELECT * FROM {table} WHERE {filter_options}"
+        filter_values = tuple(kwargs.values())
+        db = DbConnection().db
+        c = db.cursor()
+        c.execute(query, filter_values)
+        return c.fetchall()
 
     @staticmethod
     def update(obj, id_task, status):
