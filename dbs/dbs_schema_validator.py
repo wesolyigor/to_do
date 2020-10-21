@@ -1,7 +1,16 @@
+import os
 from sqlite3 import OperationalError
 
 from dbs.db_init import db_init
 
+
+def get_path():
+    answer = input("Do you want to create new db?")
+    if not answer == "yes":
+        exit()
+    else:
+        path = input("Put the db path please")
+        os.environ["DB_PATH"] = path
 
 def schema_validator(db):
     """

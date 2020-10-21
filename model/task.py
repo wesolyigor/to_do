@@ -11,7 +11,8 @@ class Tasks(Model):
 
 task = Tasks(name='ala')
 
-print(Tasks.query(task, name='dupa'))
+print(Tasks.query(name='dupa'))
+
 
 # Tasks.add(task)
 #

@@ -1,17 +1,23 @@
+import os
+from enviroment.env import load_envs
+load_envs()
 from cli.cli import Cli
 from cli.cmds.create_task import CreateTask
 from cli.cmds.filter_task import FilterTask
 from cli.cmds.remove_task import DeleteTask
 from cli.cmds.show_active_task import ShowActiveTask
+
 from cli.cmds.show_done_task import ShowDoneTask
 from cli.cmds.show_tasks import ShowTasks
 from cli.cmds.sort_task import SortTasks
 from cli.cmds.toggle_status import ToggleStatus
 
+
 commands = (CreateTask, ShowTasks, ToggleStatus, DeleteTask, ShowActiveTask, ShowDoneTask, FilterTask, SortTasks)
 
 app = Cli(commands)
 app.run()
+# print(os.environ.get('VERSION')) - sprawdzamy czy działa wczytywanie zmiennych środowiskowych
 
 # cammelcase - piszemy clasy, dlatego w tej tupli
 

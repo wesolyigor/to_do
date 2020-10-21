@@ -29,9 +29,9 @@ class Model:
         # c.execute(query, (0, 'zupa była za słona', 0))
         # db.commit()
 
-    @staticmethod
-    def query(obj, **kwargs):
-        table = obj.__class__.__name__
+    @classmethod
+    def query(cls, **kwargs):
+        table = cls.__name__
         filter_options = " AND ".join([f'{k}=?' for k, v in kwargs.items()])
         query = f"SELECT * FROM {table} WHERE {filter_options}"
         filter_values = tuple(kwargs.values())
