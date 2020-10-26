@@ -16,7 +16,6 @@ class DbConnection(Singleton):
         db_name = os.environ.get("DB_NAME")
         db_root = os.environ.get('ROOT_DIR')
         print(db_root)
-
         db_path = os.path.join(db_root, db_path, db_name)
 
         self._db = sqlite3.connect(db_path)

@@ -13,7 +13,6 @@ task = Tasks(name='ala')
 
 print(Tasks.query(name='dupa'))
 
-
 # Tasks.add(task)
 #
 # task2 = Tasks(status=0)
