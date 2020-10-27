@@ -15,7 +15,7 @@ def load_envs():
 
 
 def save_env(key, value):
-    file_path = os.path.join('..', '.env')
+    file_path = os.path.join('.env')
     with open(file_path, 'r') as file:
         data = file.readlines()
 
@@ -33,4 +33,4 @@ def save_env(key, value):
     print(data)
 
 
-save_env("DB_PATH", "db_test")
+# save_env("DB_PATH", "db_test")

@@ -2,6 +2,7 @@ import os
 from enviroment.env import load_envs
 
 load_envs()
+
 from cli.cli import Cli
 from cli.cmds.create_task import CreateTask
 from cli.cmds.filter_task import FilterTask
