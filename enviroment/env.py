@@ -1,17 +1,23 @@
 import os
 
 
+def find_project_root():
+    return os.path.join(os.path.dirname(__file__), "..")
+
+    # os.path.dirname zwraca w parametrze ścieżkę do dowolnego folderu, który ma znaleźć
+    # os.path.abspath(__file__) - zwróci ścieżkę do konkretnego pliku
+
 def load_envs():
-    file_path = os.path.join('.env')
-    os.environ["ROOT_DIR"] = os.path.abspath(".")
-    # TODO create implementation which is not dependent on execution path
+    project_root = find_project_root()
+    os.environ["ROOT_DIR"] = project_root
+    file_path = os.path.join(project_root, '.env')  # tworzy zmienną, która jest ścieżką do .env
     if os.path.exists(file_path):
         with open(file_path, "r") as file:
             for line in file:
                 lista = line.replace("\n", "").split(": ")
-                os.environ[lista[0]] = lista[1]
+                os.environ[lista[0]] = lista[1]  # przetworzenie tekstu z góry do zmiennej środowiskowej
     else:
-        print('Wrong app configuration. Check environment variables')
+        raise ValueError('Wrong app configuration. Check environment variables')
 
 
 def save_env(key, value):
@@ -31,6 +37,5 @@ def save_env(key, value):
         file.writelines(new_data)
 
     print(data)
-
 
 # save_env("DB_PATH", "db_test")

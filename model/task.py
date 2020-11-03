@@ -1,8 +1,9 @@
 import inspect
 
+from enviroment.env import load_envs
 from model import Model
 
-
+load_envs()
 class Tasks(Model):
     name = ''
     status = ''
@@ -10,7 +11,8 @@ class Tasks(Model):
 
 
 task = Tasks(name='ala')
-
+task.add(task)
+task.update(task, 3, status=1)
 print(Tasks.query(name='dupa'))
 
 # Tasks.add(task)

@@ -1,7 +1,9 @@
-import os
 from enviroment.env import load_envs
+from preflight_check_db import Director, DbBuilder
 
 load_envs()
+db_builder = Director(DbBuilder())
+db_builder.connect_or_create()
 
 from cli.cli import Cli
 from cli.cmds.create_task import CreateTask
@@ -54,4 +56,3 @@ print('*' * 20)
 # for t in dashboard:
 #     print(t)
 
-# # TODO prepare 5 _commands_old using command pattern

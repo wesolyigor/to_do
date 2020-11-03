@@ -23,11 +23,11 @@ class Model:
         print(query)
 
         print(vars(obj))
-        # db = DbConnection().db
-        # c = db.cursor()
-        #
-        # c.execute(query, (0, 'zupa była za słona', 0))
-        # db.commit()
+        db = DbConnection().db
+        c = db.cursor()
+
+        c.execute(query, (0, 'zupa była za słona', 0))
+        db.commit()
 
     @classmethod
     def query(cls, **kwargs):
@@ -53,11 +53,11 @@ class Model:
         print(query)
         print(vars(obj))
 
-        # db = DbConnection().db
-        # c = db.cursor()
-        #
-        # c.execute(query)
-        # db.commit()
+        db = DbConnection().db
+        c = db.cursor()
+
+        c.execute(query)
+        db.commit()
 
     @staticmethod
     def delete(obj, id_task):
@@ -65,8 +65,8 @@ class Model:
 
         query = f"DELETE FROM {table} WHERE id = {id_task}"
 
-        # print(query)
-        # print(vars(obj))
+        print(query)
+        print(vars(obj))
 
         db = DbConnection().db
         c = db.cursor()

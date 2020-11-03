@@ -15,12 +15,12 @@ class AbsBuilder(ABC):
     def check_db_is_correct(self):
         pass
 
-    @abstractmethod
     @property
+    @abstractmethod
     def db_path(self):
         pass
 
-    @abstractmethod
     @db_path.setter
+    @abstractmethod
     def db_path(self, new_value):
         pass
