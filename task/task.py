@@ -56,7 +56,7 @@ class Task(ABSTask):
 
         db = DbConnection().db
         c = db.cursor()
-        query = f"UPDATE tasks SET status = {self._status} WHERE id = {self._id}"
+        query = f"UPDATE task SET status = {self._status} WHERE id = {self._id}"
         c.execute(query)
         db.commit()
 

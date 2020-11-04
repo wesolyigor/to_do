@@ -1,7 +1,9 @@
 from dbs.db_connection import DbConnection
+from enviroment.env import load_envs
 from model_adapter import Model
 from task.task import Task
 from tasks.abs_tasks import AbsTasks
+from model_adapter.task import Task as TaskModel
 
 
 class Tasks(AbsTasks):
@@ -10,8 +12,10 @@ class Tasks(AbsTasks):
     """
 
     def __init__(self):
-        db = DbConnection().db
-        db_tasks = db.execute('SELECT * FROM tasks')
+
+        db_tasks = TaskModel().query()
+        # db = DbConnection().db
+        # db_tasks = db.execute('SELECT * FROM tasks')
         for db_task in db_tasks:
             self.add_task(Task(db_task))
 

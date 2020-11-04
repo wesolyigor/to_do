@@ -17,7 +17,7 @@ def db_init():
     c = conn.cursor()
     # kursor żebyśmy mogli coś z tym zrobić
 
-    c.execute('DROP TABLE IF EXISTS tasks')
+    c.execute('DROP TABLE IF EXISTS task')
     c.execute('DROP TABLE IF EXISTS dashboard')  # nazwy tabeli
 
     c.execute('''CREATE TABLE dashboard(
@@ -26,7 +26,7 @@ def db_init():
         created TEXT default (datetime('now', 'localtime'))
     )''')
 
-    c.execute('''CREATE TABLE tasks(
+    c.execute('''CREATE TABLE task(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT,
         status INTEGER,

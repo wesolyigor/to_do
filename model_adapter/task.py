@@ -4,18 +4,21 @@ from enviroment.env import load_envs
 from model_adapter import Model
 
 load_envs()
-class Tasks(Model):
+
+
+class Task(Model):
     name = ''
     status = ''
     dashboard_id = ''
 
+
 #
-task = Tasks(name='ala')
+task = Task(name='dupa', status=1, dahsboard_id=0)
 # task.add(task)
 # task.update(task, 1, status=1)
-print(Tasks.query(name='piwo', status=1))
+# print(Task.query())
 
-# Tasks.add(task)
+# Task.add(task)
 #
 # task2 = Tasks(status=0)
 # Tasks.update(task2, 22, 1)

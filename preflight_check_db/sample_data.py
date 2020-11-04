@@ -19,7 +19,7 @@ def sample_data():
         ('Alkohol', 0, 0)
     ]
 
-    c.executemany("INSERT INTO tasks (name, status, dashboard_id) VALUES (?, ?, ?)", tasks)
+    c.executemany("INSERT INTO task (name, status, dashboard_id) VALUES (?, ?, ?)", tasks)
 
     conn.commit()
     conn.close()

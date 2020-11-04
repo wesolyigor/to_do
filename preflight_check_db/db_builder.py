@@ -40,7 +40,7 @@ class DbBuilder(AbsBuilder):
 
     def check_db_is_correct(self):
         query_dashboard = f"SELECT id, name, created FROM dashboard LIMIT 1"
-        query_tasks = f"SELECT id, name, status, created, dashboard_id FROM tasks LIMIT 1"
+        query_tasks = f"SELECT id, name, status, created, dashboard_id FROM task LIMIT 1"
 
         try:
             self.db.execute(query_dashboard)
