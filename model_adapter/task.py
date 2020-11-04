@@ -1,7 +1,7 @@
 import inspect
 
 from enviroment.env import load_envs
-from model import Model
+from model_adapter import Model
 
 load_envs()
 class Tasks(Model):
@@ -9,11 +9,11 @@ class Tasks(Model):
     status = ''
     dashboard_id = ''
 
-
+#
 task = Tasks(name='ala')
-task.add(task)
-task.update(task, 3, status=1)
-print(Tasks.query(name='dupa'))
+# task.add(task)
+# task.update(task, 1, status=1)
+print(Tasks.query(name='piwo', status=1))
 
 # Tasks.add(task)
 #

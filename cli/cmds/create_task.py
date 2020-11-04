@@ -3,7 +3,7 @@ from dbs.db_connection import DbConnection
 
 
 class CreateTask(AbsCommand):
-    name = 'CreateTask'
+    name = 'Create Task'
 
     def execute(self):
         """
@@ -13,7 +13,7 @@ class CreateTask(AbsCommand):
         task_name = input('Provide task name, please \n')
 
         db = DbConnection().db
-        # tworzymy połączenie z bazą danych
+        # tworzymy połączenie z bazą danych, uchwyt do bazy
         c = db.cursor()
         # pobieramy kursor
         query = f"INSERT INTO tasks (name, status, dashboard_id) VALUES (?, ?, ?)"

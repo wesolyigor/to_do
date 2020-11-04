@@ -31,7 +31,7 @@ class Cli:
         """
         commands = self.cmds
         c_name = {cls.name: cls for cls in
-                  commands}  # wartość pola statycznego każdej klasy jest kluczem, a cls to jest klasa, a value to deklaracja klasy
+                  commands}  # wartość pola statycznego każdej klasy jest kluczem, a cls.name to jest pole statyczne klasy, a value to deklaracja klasy
         c_index = {str(idx + 1): cls for idx, cls in enumerate(commands)}
         c_name.update(c_index)  # według pythona 3.9
         # return {**c_name, **c_index}  # te gwiazdki służą do łąćzenia słowników w jeden, według pythona 3.8
@@ -40,11 +40,11 @@ class Cli:
     def parse_command(self, cmd):
         """
 
-        :param cmd: parametr przekazany przez użytkownika
+        :param cmd: klasa
         :return: wynik wywołania klasy, obiekt
         """
         commands = self.get_commands()
-        command = commands.setdefault(cmd, NoCommand)
+        command = commands.setdefault(cmd, NoCommand) # setdefault zwraca wartość z klucza podanego w pierwszym parametrze, a jak nie to defaultowy
         return command(cmd)
 
     def get_user_command(self):

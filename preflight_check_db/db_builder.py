@@ -68,7 +68,7 @@ class DbBuilder(AbsBuilder):
             os.makedirs(abs_path, exist_ok=True)
             os.environ["DB_PATH"] = user_path
             # TODO needs to pass as an argument
-            save_env('DB_PATH', user_path)
+            save_env('DB_PATH', user_path) # zapisujemy ją fizycznie na dysku
             self.db_path = os.path.join(abs_path, os.environ.get("DB_NAME"))
         else:
             raise ValueError('App configuration is incorrect')

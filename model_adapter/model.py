@@ -31,10 +31,12 @@ class Model:
 
     @classmethod
     def query(cls, **kwargs):
-        table = cls.__name__
-        filter_options = " AND ".join([f'{k}=?' for k, v in kwargs.items()])
-        query = f"SELECT * FROM {table} WHERE {filter_options}"
+        table = cls.__name__ # żebyśmy wiedzieli jaką reprezentuje tabelę
+        filter_options = "WHERE " + " AND ".join([f'{k}=?' for k, v in kwargs.items()])
+
+        query = f"SELECT * FROM {table} {filter_options if kwargs else ''}"
         filter_values = tuple(kwargs.values())
+        print(query)
         db = DbConnection().db
         c = db.cursor()
         c.execute(query, filter_values)
@@ -50,8 +52,8 @@ class Model:
         query = f"UPDATE {table} SET {status_name}={status} WHERE id = {id_task}"
 
         # zapytanie gdzie pofajemy table i cols, a w miejsce znaków zapytania dajemy tyle pytajników ile elementów
-        print(query)
-        print(vars(obj))
+        # print(query)
+        # print(vars(obj))
 
         db = DbConnection().db
         c = db.cursor()

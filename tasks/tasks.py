@@ -1,5 +1,5 @@
 from dbs.db_connection import DbConnection
-from model import Model
+from model_adapter import Model
 from task.task import Task
 from tasks.abs_tasks import AbsTasks
 

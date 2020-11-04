@@ -7,6 +7,7 @@ def find_project_root():
     # os.path.dirname zwraca w parametrze ścieżkę do dowolnego folderu, który ma znaleźć
     # os.path.abspath(__file__) - zwróci ścieżkę do konkretnego pliku
 
+
 def load_envs():
     project_root = find_project_root()
     os.environ["ROOT_DIR"] = project_root
@@ -21,7 +22,8 @@ def load_envs():
 
 
 def save_env(key, value):
-    file_path = os.path.join('.env')
+    project_root = find_project_root()
+    file_path = os.path.join(project_root, '.env')
     with open(file_path, 'r') as file:
         data = file.readlines()
 

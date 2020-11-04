@@ -1,0 +1,1 @@
+from model_adapter.model import Model
