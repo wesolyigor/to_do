@@ -4,6 +4,7 @@ import sqlite3
 from preflight_check_db.abc_builder import AbsBuilder
 from preflight_check_db.db_init import db_init
 from enviroment.env import save_env
+from preflight_check_db.sample_data import sample_data
 
 
 class DbBuilder(AbsBuilder):
@@ -50,7 +51,7 @@ class DbBuilder(AbsBuilder):
         except sqlite3.OperationalError:
             return False
 
-    # TODO - move to cli
+    # TODO - move to cli - do cmds jako klasa
 
     def get_user_path(self):
 
@@ -62,19 +63,22 @@ class DbBuilder(AbsBuilder):
             root = os.environ.get('ROOT_DIR')
             try:
                 abs_path = os.path.join(root, user_path)
+                os.makedirs(abs_path, exist_ok=True)
             except TypeError:
                 raise ValueError("Invalid db path")
-            # TODO - zrobić try na OSError
-            os.makedirs(abs_path, exist_ok=True)
-            os.environ["DB_PATH"] = user_path
-            # TODO needs to pass as an argument
-            save_env('DB_PATH', user_path) # zapisujemy ją fizycznie na dysku
-            self.db_path = os.path.join(abs_path, os.environ.get("DB_NAME"))
+            except OSError:
+                raise ValueError("Invalid db path")
+
+                os.environ["DB_PATH"] = user_path
+                save_env('DB_PATH', user_path)  # zapisujemy ją fizycznie na dysku
+                self.db_path = os.path.join(abs_path, os.environ.get("DB_NAME"))
         else:
             raise ValueError('App configuration is incorrect')
 
     @staticmethod
-    # TODO needs to pass an arguments
     def create_new_db():
         db_init()
-        # TODO ask about sample data
+        ask_sample_data = input('Do you want to put sample data? Write Y or tap the button')
+        if ask_sample_data.lower() == 'y':
+            print('okej')
+            sample_data()

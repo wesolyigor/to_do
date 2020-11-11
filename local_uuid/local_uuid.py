@@ -3,7 +3,6 @@ from collections import Iterator
 from singleton.singleton import Singleton
 
 
-# # todo implement using clousure
 class UUID(Singleton, Iterator):
     _idx: int = 0
 

@@ -14,7 +14,6 @@ class Task(ABSTask):
         # time_delta = datetime.now() - datetime.strptime(db_task[3], "%Y-%m-%d %H:%M:%S")
         # m, s = divmod(time_delta.seconds, 60)
         # h, m = divmod(m, 60)
-        # # TODO do sprawdzenia divmod
         # self._created = f"{time_delta.days} days, {h:d}h:{m:02d}m"
         self._created = datetime.strptime(db_task[3], "%Y-%m-%d %H:%M:%S")
 
@@ -31,13 +30,11 @@ class Task(ABSTask):
         time_delta = datetime.now() - self.created
         m, s = divmod(time_delta.seconds, 60)
         h, m = divmod(m, 60)
-        # TODO do sprawdzenia divmod
         return f"{time_delta.days} days, {h:d}h:{m:02d}m"
 
-    # TODO block change id
     @id.setter
     def id(self, new_val):
-        self._id = new_val
+        raise ValueError("ID can't be changed")
 
     @property
     def name(self):

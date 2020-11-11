@@ -1,6 +1,10 @@
+import inspect
 import os
 import sqlite3
 from sqlite3.dbapi2 import Connection, Cursor
+
+from model_adapter.task import Task
+
 
 
 def db_init():
@@ -15,9 +19,18 @@ def db_init():
     conn = sqlite3.connect(db_path)
     # połączenie z bazą - żebyśmy mogli z nią rozmawiać
     c = conn.cursor()
+
+    for cls in [Task]:
+        table_name = cls.__name__
+        c.execute('DROP TABLE IF EXISTS task')
+
+        cols_list = [name for name in dir(cls)
+                     if not inspect.getattr_static(cls, name) and not name.startswith('__')]
+
+
+
     # kursor żebyśmy mogli coś z tym zrobić
 
-    c.execute('DROP TABLE IF EXISTS task')
     c.execute('DROP TABLE IF EXISTS dashboard')  # nazwy tabeli
 
     c.execute('''CREATE TABLE dashboard(

@@ -1,33 +1,25 @@
 from cli.cmds.abs_command import AbsCommand
 from dbs.db_connection import DbConnection
+from model_adapter.task import Task as TaskModel
 
 
 class CreateTask(AbsCommand):
     name = 'Create Task'
-#TODO add support for adding task using model (uważać na nazwy)
+
     def execute(self):
-        """
-        przekazuje task name
-        :return:
-        """
         task_name = input('Provide task name, please \n')
 
-        db = DbConnection().db
-        # tworzymy połączenie z bazą danych, uchwyt do bazy
-        c = db.cursor()
-        # pobieramy kursor
-        query = f"INSERT INTO task (name, status, dashboard_id) VALUES (?, ?, ?)"
-        c.execute(query, (task_name, 0, 0))  # nie zrobiliśmy obsługi do bazy z innym dashboardem niż pierwszy
-        # przygotowuje zapytanie sql
-        db.commit()
-        # wywołuje zapytanie, ale nie musi to być commit
-        c.execute(f"SELECT * FROM task ORDER BY id DESC LIMIT 0, 1")
-        # wykorzystujemy autoinkrementacje id
-        t = c.fetchone()
-        # pobieramy jeden task
+        task = TaskModel(name=task_name, status=1, dashboard_id=1)
+        TaskModel.add(task)
 
-        new_task = self.Task(t)
-        # przypisujemy wywołanie klasy task z parametrem T
+        task_from_db = TaskModel.query(name=task_name)
+
+        new_task = self.Task(task_from_db[0])
 
         self.dashboard.add_task(new_task)
-        # przypisujemy nowy task do dashboardu
+
+
+
+
+
+

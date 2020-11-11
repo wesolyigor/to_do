@@ -7,15 +7,17 @@ load_envs()
 
 
 class Task(Model):
-    name = ''
-    status = ''
-    dashboard_id = ''
+    name = 'TEXT'
+    status = 'INTEGER'
+    created = 'TEXT default (datetime("now", "localtime"))'
+    dashboard_id = 'INTEGER'
+    foreign_key = '(dashboard_id) REFERENCES dashboard (id)'
 
 
-#
-task = Task(name='dupa', status=1, dahsboard_id=0)
-# task.add(task)
-# task.update(task, 1, status=1)
+task = Task(name='veneo33', status=1, dahsboard_id=0)
+Task.add(task)
+
+Task.update(task, 50, 0)
 # print(Task.query())
 
 # Task.add(task)
