@@ -18,24 +18,16 @@ class Model:
 
     @staticmethod
     def add(obj):
-        cols_list = [name for name in dir(obj)
-                     if not inspect.getattr_static(obj, name) and not name.startswith('__')]
-        # wyciąga pola statyczne
-        cols = ', '.join(cols_list)
-        # print(cols)
         table = obj.__class__.__name__
-        # wyciągamy nazwę klasy
-
-        query = f'INSERT INTO {table} ({cols}) VALUES ({", ".join(["?" for _ in cols_list])})'
-        # zapytanie gdzie pofajemy table i cols, a w miejsce znaków zapytania dajemy tyle pytajników ile elementów
-
         task_dict = vars(obj)
-
-        list_keys = list(task_dict['kwargs'].keys())
-        list_keys.sort()
-        task_val = tuple(task_dict['kwargs'][x] for x in list_keys)
-        # TODO (done partly) remove spaghetti code
-        obj.execute_query(query, task_val)
+        dict_keys = list(task_dict['kwargs'].keys())
+        cols = ', '.join([x for x in dict_keys])
+        query = f'INSERT INTO {table} ({cols}) VALUES ({", ".join(["?" for _ in dict_keys])})'
+        task_val = tuple([task_dict['kwargs'][x] for x in dict_keys])
+        db = DbConnection().db
+        c = db.cursor()
+        c.execute(query, task_val)
+        db.commit()
 
     @classmethod
     def query(cls, **kwargs):

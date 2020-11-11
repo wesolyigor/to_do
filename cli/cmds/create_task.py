@@ -1,5 +1,4 @@
 from cli.cmds.abs_command import AbsCommand
-from dbs.db_connection import DbConnection
 from model_adapter.task import Task as TaskModel
 
 

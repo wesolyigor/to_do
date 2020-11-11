@@ -8,14 +8,11 @@ from task.abc_task import ABSTask
 class Task(ABSTask):
 
     def __init__(self, db_task):
+        print(db_task)
         self._id = db_task[0]
-        self._name = db_task[1]
+        self._name = db_task[4]
         self._status = db_task[2]
-        # time_delta = datetime.now() - datetime.strptime(db_task[3], "%Y-%m-%d %H:%M:%S")
-        # m, s = divmod(time_delta.seconds, 60)
-        # h, m = divmod(m, 60)
-        # self._created = f"{time_delta.days} days, {h:d}h:{m:02d}m"
-        self._created = datetime.strptime(db_task[3], "%Y-%m-%d %H:%M:%S")
+        self._created = datetime.strptime(db_task[1], "%Y-%m-%d %H:%M:%S")
 
     @property
     def id(self):
