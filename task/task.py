@@ -8,7 +8,6 @@ from task.abc_task import ABSTask
 class Task(ABSTask):
 
     def __init__(self, db_task):
-        print(db_task)
         self._id = db_task[0]
         self._name = db_task[4]
         self._status = db_task[2]

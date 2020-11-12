@@ -7,24 +7,13 @@ from model_adapter.task import Task as TaskModel
 
 
 class Tasks(AbsTasks):
-    """
-    tworzymy obiekt taska 20:48
-    """
 
     def __init__(self):
-
         db_tasks = TaskModel().query()
-        # db = DbConnection().db
-        # db_tasks = db.execute('SELECT * FROM tasks')
         for db_task in db_tasks:
             self.add_task(Task(db_task))
 
     def add_task(self, task):
-        """
-
-        :param task:
-        :return:
-        """
         self._tasks.append(task)
 
     def get_task(self, idx):
@@ -41,6 +30,7 @@ class Tasks(AbsTasks):
         self._tasks.remove(task_to_remove[0])
 
         Model.delete(self, idx)
+        print(f'Task {idx} deleted from db')
 
         # db = DbConnection().db
         # c = db.cursor()

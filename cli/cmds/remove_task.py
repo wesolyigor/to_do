@@ -8,7 +8,7 @@ class DeleteTask(AbsCommand):
         task_id = input('Task id?\n')
         try:
             task_id = int(task_id)
-            task = self.dashboard.get_task(task_id)
+            # task = self.dashboard.get_task(task_id)
         except ValueError as err:
             print(f'Incorrect value {task_id}')
         except IndexError as err:

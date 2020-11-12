@@ -18,8 +18,6 @@ def db_init():
     db_root = os.environ.get('ROOT_DIR')
     db_path = os.path.join(db_root, db_path, db_name)
 
-    print('ten konkretny', db_path)
-
     # dbpath prowadzi do roota aplikacji
     conn = DbConnection().db
     # połączenie z bazą - żebyśmy mogli z nią rozmawiać
@@ -44,7 +42,6 @@ def db_init():
 
         query = f"CREATE TABLE {table_name.lower()} (id INTEGER PRIMARY KEY AUTOINCREMENT,{''.join([f' {name} {val},' for name, val in cols_list])[:-1]})"
 
-        print(query)
         c.execute(query)
 
         conn.commit()
@@ -54,18 +51,18 @@ def db_init():
 
     # kursor żebyśmy mogli coś z tym zrobić
 
-        # c.execute('DROP TABLE IF EXISTS task')  # nazwy tabeli
+    # c.execute('DROP TABLE IF EXISTS task')  # nazwy tabeli
 
-        # c.execute('''CREATE TABLE task(
-        #     id INTEGER PRIMARY KEY AUTOINCREMENT,
-        #     name TEXT,
-        #     status INTEGER,
-        #     created TEXT default (datetime('now', 'localtime')),
-        #     dashboard_id INTEGER,
-        #     FOREIGN KEY (dashboard_id) REFERENCES dashboard (id)
-        #
-        # )''')
-        #
+    # c.execute('''CREATE TABLE task(
+    #     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    #     name TEXT,
+    #     status INTEGER,
+    #     created TEXT default (datetime('now', 'localtime')),
+    #     dashboard_id INTEGER,
+    #     FOREIGN KEY (dashboard_id) REFERENCES dashboard (id)
+    #
+    # )''')
+    #
 
 
 # w terminalu, gdy chcemy odpalić ten plik wpisujemy: python db_init.py

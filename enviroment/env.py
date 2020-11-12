@@ -38,6 +38,7 @@ def save_env(key, value):
     with open(file_path, 'w') as file:
         file.writelines(new_data)
 
+
     print(data)
 
 # save_env("DB_PATH", "db_test")

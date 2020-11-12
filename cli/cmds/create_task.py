@@ -1,3 +1,5 @@
+from colored import fg, attr, bg
+
 from cli.cmds.abs_command import AbsCommand
 from model_adapter.task import Task as TaskModel
 
@@ -14,7 +16,6 @@ class CreateTask(AbsCommand):
         task_from_db = TaskModel.query(name=task_name)
 
         new_task = self.Task(task_from_db[0])
-
         self.dashboard.add_task(new_task)
 
 

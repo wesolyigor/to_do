@@ -1,4 +1,6 @@
-from cli.cmds.create_task import CreateTask
+import emoji
+from colored import fg, bg, attr
+
 from cli.cmds.null_command import NoCommand
 
 
@@ -16,6 +18,8 @@ class Cli:
         :return: jest while dzięki czemu jest to pętla nieskończona, żeby program się nigdy nie wyłączał. uruchamia me
         todę get_user command
         """
+        print(emoji.emojize('%s%s WITAJ W APLIKACJI TODO! :fire: :fire: :fire: CO CHCESZ ZROBIĆ? %s') % (
+            fg('white'), bg('dark_red_1'), attr('reset')))
         while True:
             self.get_user_command()
 
@@ -44,14 +48,17 @@ class Cli:
         :return: wynik wywołania klasy, obiekt
         """
         commands = self.get_commands()
-        command = commands.setdefault(cmd, NoCommand) # setdefault zwraca wartość z klucza podanego w pierwszym parametrze, a jak nie to defaultowy
+        command = commands.setdefault(cmd,
+                                      NoCommand)  # setdefault zwraca wartość z klucza podanego w pierwszym parametrze, a jak nie to defaultowy
         return command(cmd)
 
     def get_user_command(self):
         for idx, cmd in enumerate({k: v for k, v in self.get_commands().items() if
                                    not k.isdigit()}.values()):  # dosłuchać 19:07. RObimy to po to, żeby się ładnie wyświetlało dla użytkownika
             print(f'{idx + 1}. {cmd.name}')
-        user_command = input('Choose command \n')
+        user_command = input(
+            "%s%s \N{eyes} Choose command \N{eyes} %s \n" % (fg('white'), bg('dark_red_1'), attr('reset')))
+        # print('%s%s Hello World !!! %s' % (fg('white'), bg('black'), attr('reset')))
         command = self.parse_command(
             user_command)  # wywołujemy medotę parse.. z przekazanym inputem od usera, user command jest obiektem klasy
         command.execute()

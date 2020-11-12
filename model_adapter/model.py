@@ -1,5 +1,3 @@
-import inspect
-
 from dbs.db_connection import DbConnection
 
 
@@ -54,6 +52,10 @@ class Model:
     def delete(obj, id_task):
         table = obj.__class__.__name__
 
-        query = f"DELETE FROM {table} WHERE id = {id_task}"
+        query = f"DELETE FROM Task WHERE id = {id_task}"
 
-        obj.execute_query(query)
+        db = DbConnection().db
+        c = db.cursor()
+        c.execute(query)
+        db.commit()
+        # obj.execute_query(query)
