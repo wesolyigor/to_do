@@ -22,5 +22,3 @@ What's next?
 5. Dokumentacja
 6. unit testy
 7. statyczne typowanie
-8. kolorki i emoji w cli 
-
