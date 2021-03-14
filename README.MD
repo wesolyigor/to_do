@@ -15,7 +15,7 @@
 
 What's next?
 
-1. Dashboard + cls task (powinna opierać się tylko o bazę danych). Wszystkie metody w dashbordzie powinny robić query do bazy
+1. Dashboard + cls task 
 2. Mail remainder
 3. All tables make by models
 4. Documentation
