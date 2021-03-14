@@ -11,4 +11,3 @@ class OneTask(ABSTask):
         self._status = True
         self._created = datetime.now()
         self._deadline = datetime.strptime()
-

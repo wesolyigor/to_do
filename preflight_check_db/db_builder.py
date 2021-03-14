@@ -51,7 +51,6 @@ class DbBuilder(AbsBuilder):
         except sqlite3.OperationalError:
             return False
 
-    # TODO - move to cli - do cmds jako klasa
 
     def get_user_path(self):
 
@@ -70,7 +69,7 @@ class DbBuilder(AbsBuilder):
                 raise ValueError("Invalid db path")
 
                 os.environ["DB_PATH"] = user_path
-                save_env('DB_PATH', user_path)  # zapisujemy ją fizycznie na dysku
+                save_env('DB_PATH', user_path)
                 self.db_path = os.path.join(abs_path, os.environ.get("DB_NAME"))
         else:
             raise ValueError('App configuration is incorrect')

@@ -31,11 +31,6 @@ class FilterTask(AbsCommand):
             except ValueError:
                 print(f'Incorrect date. \N{pile of poo} Check your value.')
 
-        # TODO (done) validate and support None value
-
-        # time_delta_start = datetime.now() - date_start
-        # time_delta_end = datetime.now() - date_end
-
         if date_start > date_end:
             print("Date start must be earlier than date of end!")
             return

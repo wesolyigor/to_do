@@ -17,9 +17,3 @@ class CreateTask(AbsCommand):
 
         new_task = self.Task(task_from_db[0])
         self.dashboard.add_task(new_task)
-
-
-
-
-
-

@@ -42,9 +42,7 @@ class Model:
     @staticmethod
     def update(obj, id_task, status):
         status_name = [name for name in dir(obj) if name == 'status'][0]
-        # wyciąga pola statyczne
         table = obj.__class__.__name__
-        # wyciągamy nazwę klasy
         query = f"UPDATE {table} SET {status_name}={status} WHERE id = {id_task}"
         obj.execute_query(query)
 
@@ -58,4 +56,3 @@ class Model:
         c = db.cursor()
         c.execute(query)
         db.commit()
-        # obj.execute_query(query)

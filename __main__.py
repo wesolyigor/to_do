@@ -18,8 +18,8 @@ from cli.cmds.toggle_status import ToggleStatus
 
 commands = (CreateTask, ShowTasks, ToggleStatus, DeleteTask, ShowActiveTask, ShowDoneTask, FilterTask, SortTasks)
 
-app = Cli(commands)  # tworzymy obiekt app klasy CLI
-app.run()  # wywołujemy metodę run obiektu app
+app = Cli(commands)
+app.run()
 
 
 print('*' * 20)

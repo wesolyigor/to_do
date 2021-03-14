@@ -17,17 +17,3 @@ class UUID(Singleton, Iterator):
         result: int = self._idx
         self._idx += 1
         return result
-
-#
-# def uuid():
-#     counter = 0
-#
-#     def inner(idx=None):
-#         nonlocal counter
-#         if idx is not None:
-#             counter = idx
-#         result = counter
-#         counter += 1
-#         return result
-#
-#     return inner

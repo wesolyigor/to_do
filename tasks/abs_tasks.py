@@ -27,4 +27,3 @@ class AbsTasks(Iterable, ABC):
     @abstractmethod
     def __repr__(self):
         pass
-

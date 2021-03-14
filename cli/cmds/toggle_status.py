@@ -15,4 +15,3 @@ class ToggleStatus(AbsCommand):
             print(f'No task with this id, {task_id}')
         else:
             task.toggle_status()
-

@@ -25,4 +25,3 @@ class ABSTask(ABC):
     @abstractmethod
     def deadline(self):
         pass
-

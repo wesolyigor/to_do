@@ -1,5 +1,4 @@
 from datetime import datetime
-from time import strptime
 
 from dbs.db_connection import DbConnection
 from task.abc_task import ABSTask

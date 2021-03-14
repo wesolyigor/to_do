@@ -9,5 +9,3 @@ class ShowTasks(AbsCommand):
     def execute(self):
         for task in self.dashboard:
             print(f'%s%s {task} %s' % (fg('black'), bg('blue'), attr('reset')))
-
-

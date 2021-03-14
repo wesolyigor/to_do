@@ -10,4 +10,4 @@ class Director():
                 return
         self._builder.get_user_path()
         self._builder.create_new_db()
-        self._builder.connect_to_db() # robimy to w jeżeli jest bad path
+        self._builder.connect_to_db()

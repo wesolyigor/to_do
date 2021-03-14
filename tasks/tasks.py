@@ -32,11 +32,5 @@ class Tasks(AbsTasks):
         Model.delete(self, idx)
         print(f'Task {idx} deleted from db')
 
-        # db = DbConnection().db
-        # c = db.cursor()
-        # query = f"DELETE FROM tasks WHERE id = {idx}"
-        # c.execute(query)
-        # db.commit()
-
     def __repr__(self):
         return f'class Task()'
